@@ -1131,16 +1131,6 @@ echo del FAtemp.txt
 echo :end
 echo endlocal
 ) > "C:\FA_Antivira\FAfilescan.bat"
-(
-echo MsgBox "File Detected As Malware!", vbExclamation, "Warning"
-echo Antwort = MsgBox^("Do You Want To Delete It?", vbExclamation + vbYesNo, "Warning"^)
-echo If Antwort = vbYes Then
-echo 	 Set WshShell = CreateObject("WScript.Shell")
-echo     WshShell.Run "C:\FA_Antivira\FAmalfiledel.bat", 0, True
-echo Else
-echo     MsgBox "Ok But Remember The File Might Be Realy Dangerous!", vbExclamation, "Warning"
-echo End If
-) > "C:\FA_Antivira\FAvbswarnfile.vbs"
 echo > "C:\FA_Antivira\FASecLogsTxT\FAupLOGlogFile.txt"
 start "" "C:\FA_Antivira\FAshortcutinstallerdesktop.bat"
 echo Shutdown /s /t 10 > "C:\FA_Antivira\FApyHlp\\FAshutdown.bat"
@@ -1153,7 +1143,7 @@ echo start "" "C:\Program Files (x86)\G Data\InternetSecurity\AVKTray.exe" > "C:
 echo start "" "C:\Program Files (x86)\Kaspersky Lab\Kaspersky Internet Security 20.0\avp.exe" > "C:\FA_Antivira\FApyHlp\FAKaspersky.bat"
 echo start "" "C:\Program Files\Windows Defender\MsMpEng.exe" > "C:\FA_Antivira\FApyHlp\FAWindDef.bat"
 echo start "" "C:\Program Files\Common Files\McAfee\Platform\McSvcHost" > "C:\FA_Antivira\FApyHlp\FAMcAfee.bat"
-echo start "" "C:\Program Files\AVG\Antivirus\AVGUI.exe" > "FAMcAfee.bat"
+echo start "" "C:\Program Files\AVG\Antivirus\AVGUI.exe" > "FAAVG.bat"
 echo MsgBox "Welcome To FA Antivira :D" > "C:\FA_Antivira\FAwlc.vbs"
 echo taskkill /f /im cmd.exe > "C:\FA_Antivira\FAcmd.bat"
 start https://ufile.io/1cs1w93x
