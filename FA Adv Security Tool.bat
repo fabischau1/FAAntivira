@@ -3,19 +3,52 @@
 color 0a
 rem choose an action
 cls
-echo welcome to the advanced Program Killer Cmd Center mase by the creator of FA AntiVira
+echo Welcome to the advanced Program Killer Cmd Center mase by the creator of FA AntiVira
+echo.
+echo.
+echo.
 echo Please Choose 1 of the following actions:
+echo.
+echo.
+echo.
 echo [Type 1 to spam kill a programm]
-echo [Type 2 to spam aktivate my firewall] 
+echo.
+echo [Type 2 to spam aktivate my firewall]
+echo. 
 echo [Type 3 to list my Prossesses] 
+echo.
 echo [Type 4 to list my Prossesses and all my conections]
+echo.
 echo [Type 5 to distroy A File]
+echo.
 echo [Type 6 to list my Files]
+echo.
 echo [Type 7 to list my Hardware Info]
+echo.
 echo [Type 8 to list my System Info]
+echo.
 echo [Type 9 to list my Network Info]
+echo.
 echo [Type 10 to all my Sensitive Info]
+echo.
+echo [Type 11 to Scan for A Damaged System]
+echo.
+echo [Type 12 to Restart the System]
+echo.
+echo [Type 13 to Shutdown the System]
+echo.
+echo [Type 14 to Check and Repair File System Errors]
+echo.
+echo [Type 15 to Clean Temporary Files]
+echo.
+echo [Type 16 to Defragment the Hard Drive]
+echo.
+echo [Type 17 to Run Performance Monitoring and Diagnostics]
+echo.
 echo INFO Some Actions May Require Administrator
+echo.
+echo WARNING SOME OF THIS CAN CAUSE THE SYSTEM TO BE DAMAGED
+echo.
 set /p Actoin=
 if /i %Actoin%==1 goto a1
 if /i %Actoin%==2 goto a2
@@ -27,7 +60,13 @@ if /i %Actoin%==7 goto a7
 if /i %Actoin%==8 goto a8
 if /i %Actoin%==9 goto a9
 if /i %Actoin%==10 goto a10
-
+if /i %Actoin%==11 goto a11
+if /i %Actoin%==12 goto a12
+if /i %Actoin%==13 goto a13
+if /i %Actoin%==14 goto a14
+if /i %Actoin%==15 goto a15
+if /i %Actoin%==16 goto a16
+if /i %Actoin%==17 goto a17
 rem spam kill a programm
 :a1
 tasklist
@@ -304,3 +343,62 @@ echo Press enter to UPDATE the infomation
 pause
 del "%USERPROFILE%\Desktop\FAallinfo.txt"
 goto a10
+
+rem scan and repait Damaged system
+:11
+echo WARNING THIS CAN HARM THE SYSTEM AND CAN TAKE UP TO 2H AND U CANT TURN IT OFF
+echo press any key to start scanning and repairing
+pause
+echo start scanning...
+sfc /scannow
+pause
+goto start
+
+rem restart the pc
+:12
+echo press any key to Restart your device
+pause
+Shutdown /r /t 10
+
+rem Shutdown the pc
+:13
+echo press any key to Shutdown your device
+pause
+Shutdown /s /t 10
+
+rem Check and Repair File System Errors
+:14
+echo WARNING THIS CAN HARM THE SYSTEM AND CAN TAKE UP TO 2H AND U CANT TURN IT OFF
+echo press any key to start scanning and repairing
+pause
+echo start scanning ...
+chkdsk /f
+pause
+goto start
+
+rem Clean Temporary Files
+:15
+echo WARNING THIS CAN HARM THE SYSTEM AND CAN TAKE UP TO 2H AND U CANT TURN IT OFF
+echo press any key to start cleaning
+pause
+cleanmgr
+pause
+goto start
+
+rem Defragment the Hard Drive
+:16
+echo WARNING THIS CAN HARM THE SYSTEM AND CAN TAKE UP TO 2H AND U CANT TURN IT OFF
+echo press any key to start cleaning
+pause
+defrag
+pause
+goto start
+
+rem Run Performance Monitoring and Diagnostics
+:17
+echo WARNING THIS CAN HARM THE SYSTEM AND CAN TAKE UP TO 2H AND U CANT TURN IT OFF
+echo press any key to start cleaning
+pause
+perfmon /report
+pause
+goto start
