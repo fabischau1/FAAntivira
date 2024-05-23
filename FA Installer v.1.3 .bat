@@ -87,7 +87,7 @@ echo         os.system^("start C:\\FA_Antivira\\FApyHlp\\FAscanmenu.py"^)
 echo     elif i == 4:
 echo         os.system^("start C:\\FA_Antivira\\FAantivirusopener.bat"^)
 echo     elif i == 5:
-echo         os.system^("start notepad C:\\FA_Antivira\\FAhelp.txt"^)
+echo         os.system^("start C:\\FA_Antivira\\FASett\\FApuar.bat"^)
 echo     elif i == 6:
 echo         os.system^("start C:\\FA_Antivira\\FAadvtool.bat"^)
 echo     elif i == 7:
@@ -102,7 +102,7 @@ echo     ^(100, 500^), ^(300, 500^), ^(500, 500^)
 echo ]
 echo button_texts = [
 echo     "URL Scan", "Passwort Generator", "Super Passwort Generator",
-echo     "Scan Menu", "Open Anti Virus", "Help",
+echo     "Scan Menu", "Open Anti Virus", "Quarantine",
 echo     "Advanced", "Start Menu", "Kill File"
 echo ]
 echo root = tk.Tk^(^)
@@ -1015,8 +1015,8 @@ echo                             "2. Passwort Generator" ^& vbCrLf ^& _
 echo                             "3. Super Passwort Generator" ^& vbCrLf ^& _
 echo                             "4. Scan Menu" ^& vbCrLf ^& _
 echo                             "5. Open Anti Virus" ^& vbCrLf ^& _
-echo                             "6. Help" ^& vbCrLf ^& _
-echo                             "7. Scan For Damaged System" ^& vbCrLf ^& _
+echo                             "6. Quarantine" ^& vbCrLf ^& _
+echo                             "7. Advanced" ^& vbCrLf ^& _
 echo                             "8. Stard Menu" ^& vbCrLf ^& _
 echo                             "9. Kill File", "FA_Antivira"^)
 echo     Select Case buttonClicked
@@ -1027,14 +1027,13 @@ echo             OpenFile "C:\FA_Antivira\FAPasswordgenerator.bat"
 echo         Case "3"
 echo             OpenFile "C:\FA_Antivira\FASuperPassword.bat"
 echo         Case "4"
-echo             OpenFile "C:\FA_Antivira\FApyHlp\FAscanmenu.py"
 echo             OpenFile "C:\FA_Antivira\FAvbs\FAscanmenu.vbs"
 echo         Case "5"
 echo             OpenFile "C:\FA_Antivira\FAantivirusopener.bat"
 echo         Case "6"
-echo             OpenFile "C:\FA_Antivira\FAhelp.txt"
+echo             OpenFile "C:\FA_Antivira\FASett\FApuar.bat"
 echo         Case "7"
-echo             OpenFile "C:\FA_Antivira\FAdmgsysscan.bat"
+echo             OpenFile "C:\FA_Antivira\FAadvtool.bat"
 echo         Case "8"
 echo             OpenFile "C:\FA_Antivira\StardMenu.bat"
 echo         Case "9"
@@ -1144,6 +1143,7 @@ echo endlocal
 echo $scriptPath = $MyInvocation.MyCommand.Definition
 echo Set-Location $PSScriptRoot
 echo Set-ExecutionPolicy RemoteSigned -Scope Process -Force
+echo $quarantinePath = "C:\FA_Antivira\FAquar"
 echo $MalwareDatabase = "C:\FA_Antivira\FAMalHashDatabase.txt"
 echo $LogFile = "C:\FA_Antivira\FASecLogsTxT\FA_File_Scan_Log.txt"
 echo $Extensions = "*.dll", "*.exe", "*.bat", "*.cmd", "*.py", "*.js", "*.ps1", "*.vbs", "*.wsf", "*.msh"
@@ -1153,8 +1153,8 @@ echo     $fileHash = ^(Get-FileHash -Path $filePath -Algorithm SHA256^).Hash
 echo     if ^(Select-String -Path $MalwareDatabase -Pattern $fileHash^) {
 echo         Write-Host "Malware Detected in $filePath" -ForegroundColor Red
 echo         Add-Content -Path $LogFile -Value ^("Date: {0} Time: {1} Result: Malware found in $fileName" -f ^(Get-Date^), ^(Get-Date -Format "HH:mm:ss"^)^)
-echo         Start-Process -FilePath "C:\FA_Antivira\Python\FAwarnfilescan.py" -ArgumentList $filePath
-echo         Start-Process -FilePath "C:\FA_Antivira\FAfullscan.bat"
+echo         Move-Item -Path $filePath -Destination $quarantinePath
+echo         Write-Host File $filePath was moved to Quarantine
 echo         Pause
 echo     } else {
 echo         Write-Host "No Malware found in $filePath" -ForegroundColor Green
@@ -1173,6 +1173,7 @@ echo pause
 echo $scriptPath = $MyInvocation.MyCommand.Definition
 echo Set-Location $PSScriptRoot
 echo Set-ExecutionPolicy RemoteSigned -Scope Process -Force
+echo $quarantinePath = "C:\FA_Antivira\FAquar"
 echo $MalwareDatabase = "C:\FA_Antivira\FAMalHashDatabase.txt"
 echo $LogFile = "C:\FA_Antivira\FASecLogsTxT\FA_File_Scan_Log.txt"
 echo $Extensions = "*.dll", "*.exe", "*.bat", "*.cmd", "*.py", "*.js", "*.ps1", "*.vbs", "*.wsf", "*.msh"
@@ -1182,8 +1183,8 @@ echo     $fileHash = ^(Get-FileHash -Path $filePath -Algorithm SHA256^).Hash
 echo     if ^(Select-String -Path $MalwareDatabase -Pattern $fileHash^) {
 echo         Write-Host "Malware Detected in $filePath" -ForegroundColor Red
 echo         Add-Content -Path $LogFile -Value ^("Date: {0} Time: {1} Result: Malware found in $fileName" -f ^(Get-Date^), ^(Get-Date -Format "HH:mm:ss"^)^)
-echo         Start-Process -FilePath "C:\FA_Antivira\Python\FAwarnfilescan.py" -ArgumentList $filePath
-echo         Start-Process -FilePath "C:\FA_Antivira\FAfullscan.bat"
+echo         Move-Item -Path $filePath -Destination $quarantinePath
+echo         Write-Host File $filePath was moved to Quarantine
 echo         Pause
 echo     } else {
 echo         Write-Host "No Malware found in $filePath" -ForegroundColor Green
@@ -1202,6 +1203,7 @@ echo pause
 echo $scriptPath = $MyInvocation.MyCommand.Definition
 echo Set-Location $PSScriptRoot
 echo Set-ExecutionPolicy RemoteSigned -Scope Process -Force
+echo $quarantinePath = "C:\FA_Antivira\FAquar"
 echo $MalwareDatabase = "C:\FA_Antivira\FAMalHashDatabase.txt"
 echo $LogFile = "C:\FA_Antivira\FASecLogsTxT\FA_File_Scan_Log.txt"
 echo $Extensions = "*.dll", "*.exe", "*.bat", "*.cmd", "*.py", "*.js", "*.ps1", "*.vbs", "*.wsf", "*.msh"
@@ -1211,8 +1213,8 @@ echo     $fileHash = ^(Get-FileHash -Path $filePath -Algorithm SHA256^).Hash
 echo     if ^(Select-String -Path $MalwareDatabase -Pattern $fileHash^) {
 echo         Write-Host "Malware Detected in $filePath" -ForegroundColor Red
 echo         Add-Content -Path $LogFile -Value ^("Date: {0} Time: {1} Result: Malware found in $fileName" -f ^(Get-Date^), ^(Get-Date -Format "HH:mm:ss"^)^)
-echo         Start-Process -FilePath "C:\FA_Antivira\Python\FAwarnfilescan.py" -ArgumentList $filePath
-echo         Start-Process -FilePath "C:\FA_Antivira\FAfullscan.bat"
+echo         Move-Item -Path $filePath -Destination $quarantinePath
+echo         Write-Host File $filePath was moved to Quarantine
 echo         Pause
 echo     } else {
 echo         Write-Host "No Malware found in $filePath" -ForegroundColor Green
@@ -1888,6 +1890,58 @@ echo perfmon /report
 echo pause
 echo goto start
 ) > "C:\FA_Antivira\FAadvtool.bat"
+(
+echo @echo off
+echo setlocal
+echo color 0E
+echo :0
+echo cls
+echo set "QuarantineDir=C:\FA_Antivira\FAquar"
+echo if not exist "%%QuarantineDir%%" ^(
+echo     echo The Quarantine Cant Load or does not ecsist.
+echo	 echo try reinstalling FA AntiVira to fix the problem
+echo     exit /b 1
+echo ^)
+echo echo FA AntiVira Quarantine
+echo echo.
+echo for %%%%f in ^("%%QuarantineDir%%\*"^) do ^(
+echo     echo -------------------------------
+echo 	echo.
+echo     echo %%%%~nxf
+echo 	echo.
+echo ^)
+echo echo -------------------------------
+echo endlocal
+echo pause
+echo echo please choose an option [1 add to Quarantine / 2 Restore From Quarantine / 3 Delete File In Quarantine]
+echo echo.
+echo set /p Userchoice="You: "
+echo if /i %%Userchoice%%==1 goto 1
+echo if /i %%Userchoice%%==2 goto 2
+echo if /i %%Userchoice%%==3 goto 3
+echo :1
+echo echo please type in the path of the file that you want to add to Quarantine
+echo set /p path1="You: "
+echo move /y "%%path1%%" "C:\FA_Antivira\FAquar"
+echo pause
+echo goto 0
+echo :2
+echo cd C:\FA_Antivira\FAquar
+echo echo please type in the file name you want to restore
+echo set /p file1="You: "
+echo echo please type in the folder path you want to put the file into
+echo set /p path2="You: "
+echo move /y "%%file1%%" "%%path2%%"
+echo pause
+echo goto 0
+echo :3
+echo cd C:\FA_Antivira\FAquar
+echo echo please type in the file name you want to delete
+echo set /p file2="You: "
+echo del /F /Q "%%file2%%"
+echo pause
+echo goto 0
+) > "C:\FA_Antivira\FASett\FApuar.bat"
 timeout /t 1 >nul
 start https://ufile.io/1cs1w93x
 echo Progress: [----------] 0% 
