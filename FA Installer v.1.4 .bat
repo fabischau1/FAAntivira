@@ -1,6 +1,6 @@
 @echo off
 setlocal enabledelayedexpansion
-set "FAVersion=v.1.3"
+set "FAVersion=v.1.4"
 mkdir "C:\FA_Antivira"
 mkdir "C:\FA_Antivira\FASecLogsTxT"
 mkdir "C:\FA_Antivira\Python"
@@ -1361,7 +1361,7 @@ echo }
 echo pause
 ) > "C:\FA_Antivira\FAoptionScan\FAtempscanVT.ps1"
 (
-echo $apiKey = Read-Host -Prompt "Please Enter Your VirusTotal API Key:"
+echo $apiKey = Read-Host -Prompt "Please Enter Your VirusTotal API Key"
 echo $currentDir = $PSScriptRoot
 echo $files = Get-ChildItem -Path $currentDir -File
 echo $FAquarDir = "C:\FA_AntiVira\FAquar"
@@ -1408,11 +1408,51 @@ echo }
 echo pause
 ) > "%USERPROFILE%\Downloads\FAdowscanVT.ps1"
 (
+echo $quarantinePath = "C:\FA_Antivira\FAquar"
+echo $scriptDirectory = Split-Path -Path $PSCommandPath -Parent
+echo $exeFiles = Get-ChildItem -Path $scriptDirectory -Filter *.exe -Recurse
+echo foreach ^($exeFile in $exeFiles^) {
+echo     $signature = Get-AuthenticodeSignature -FilePath $exeFile.FullName
+echo     if ^($signature.Status -eq "Valid"^) {
+echo         Write-Host "file '$($exeFile.Name)' has a legitement signature"
+echo         continue
+echo     }    try {
+echo         Move-Item -Path $exeFile.FullName -Destination $quarantinePath
+echo         Write-Host "file '$($exeFile.Name)' was put into Quarantine."
+echo     } catch {
+echo         Write-Host "Error we couldnt put '$($exeFile.Name)' into Quarantine $_"
+echo     }
+echo }
+echo Write-Host "Press any key to continue..."
+echo Read-Host
+) > "%USERPROFILE%\Downloads\FAdowscanSIG.ps1"
+(
+echo $quarantinePath = "C:\FA_Antivira\FAquar"
+echo $scriptDirectory = Split-Path -Path $PSCommandPath -Parent
+echo $exeFiles = Get-ChildItem -Path $scriptDirectory -Filter *.exe -Recurse
+echo foreach ^($exeFile in $exeFiles^) {
+echo     $signature = Get-AuthenticodeSignature -FilePath $exeFile.FullName
+echo     if ^($signature.Status -eq "Valid"^) {
+echo         Write-Host "file '$($exeFile.Name)' has a legitement signature"
+echo         continue
+echo     }    try {
+echo         Move-Item -Path $exeFile.FullName -Destination $quarantinePath
+echo         Write-Host "file '$($exeFile.Name)' was put into Quarantine."
+echo     } catch {
+echo         Write-Host "Error we couldnt put '$($exeFile.Name)' into Quarantine $_"
+echo     }
+echo }
+echo Write-Host "Press any key to continue..."
+echo Read-Host
+) > "C:\FA_Antivira\FAoptionScan\FAdowscanSIG.ps1"
+(
 echo @echo off
 echo color 0a
 echo powershell -NoProfile -ExecutionPolicy Bypass -File "%USERPROFILE%\Desktop\FAtempscan.ps1"
 echo powershell -NoProfile -ExecutionPolicy Bypass -File "%USERPROFILE%\Downloads\FAdowscan.ps1"
 echo powershell -NoProfile -ExecutionPolicy Bypass -File "C:\FA_Antivira\FAoptionScan\FAscanthfol.ps1"
+echo powershell -NoProfile -ExecutionPolicy Bypass -File "%USERPROFILE%\Downloads\FAdowscanSIG.ps1"
+echo powershell -NoProfile -ExecutionPolicy Bypass -File "C:\FA_Antivira\FAoptionScan\FAdowscanSIG.ps1"
 echo echo THE FOLLOWING BATCH SCAN MAY HAVE A LOT OF FALSE POSITIVS
 echo pause
 echo start "" powershell -ExecutionPolicy Bypass -File "%USERPROFILE%\Desktop\FAtempscanbat.ps1"
@@ -1454,6 +1494,8 @@ attrib +H "%USERPROFILE%\Downloads\FAdowscan.ps1"
 attrib +H "C:\FA_Antivira\FAoptionScan\FAscanthfol.ps1"
 attrib +H "C:\FA_Antivira\FAoptionScan\FAtempscanVT.ps1"
 attrib +H "%USERPROFILE%\Downloads\FAdowscanVT.ps1"
+attrib +H "C:\FA_Antivira\FAoptionScan\FAdowscanSIG.ps1"
+attrib +H "%USERPROFILE%\Downloads\FAdowscanSIG.ps1"
 (
 echo format
 echo bcdedit
