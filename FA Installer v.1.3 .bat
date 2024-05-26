@@ -1,6 +1,6 @@
 @echo off
 setlocal enabledelayedexpansion
-set "FAVersion=v.1.2"
+set "FAVersion=v.1.3"
 mkdir "C:\FA_Antivira"
 mkdir "C:\FA_Antivira\FASecLogsTxT"
 mkdir "C:\FA_Antivira\Python"
@@ -1338,8 +1338,9 @@ echo         elseif ^($detections -ge 5^) {
 echo             if ^($detections -lt 20^) {
 echo                 Write-Host "File '$($file.Name)' Was Filed As Dangerous"
 echo                 Write-Host "Anti Virus Detections: $detections"
-echo                 if ^($detections -gt 10^) {
+echo                 if ^($detections -gt 4^) {
 echo                     Move-Item -Path $filePath -Destination $FAquarDir
+echo 			         Write-Host "File '$($file.Name)' Was Moved To Quarantine because it had $detections Detections"
 echo                 }
 echo             }
 echo             else {
@@ -1384,8 +1385,9 @@ echo         elseif ^($detections -ge 5^) {
 echo             if ^($detections -lt 20^) {
 echo                 Write-Host "File '$($file.Name)' Was Filed As Dangerous"
 echo                 Write-Host "Anti Virus Detections: $detections"
-echo                 if ^($detections -gt 10^) {
+echo                 if ^($detections -gt 4^) {
 echo                     Move-Item -Path $filePath -Destination $FAquarDir
+echo 			         Write-Host "File '$($file.Name)' Was Moved To Quarantine because it had $detections Detections"
 echo                 }
 echo             }
 echo             else {
