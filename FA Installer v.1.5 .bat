@@ -2018,9 +2018,8 @@ echo check if the file FAMalHashDatabase.txt is in C:\FA_AntiVira
 echo if the file isnt there goto https://ufile.io/1cs1w93x and install it there and then put it there
 ) > "C:\FA_AntiVira\info1.txt"
 echo powershell -NoProfile -ExecutionPolicy Bypass -File "C:\FA_Antivira\FAprotection\FAdownprotection.ps1" > "C:\FA_Antivira\FAprotection\FAdownprotection.bat"
-set "outputFile=C:\FA_Antivira\FAMalHashDatabase.txt"
-powershell -Command "(New-Object System.Net.WebClient).DownloadFile('%url%', '%outputFile%')"
 start "" "C:\FA_AntiVira\info1.txt"
+start https://ufile.io/1cs1w93x
 cls
 echo Progress: [----------] 0% 
 timeout /t 1 >nul
