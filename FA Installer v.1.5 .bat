@@ -1,7 +1,9 @@
 @echo off
 setlocal enabledelayedexpansion
-set "FAVersion=v.1.4"
+set "FAVersion=v.1.5"
+set "url=https://download2275.mediafire.com/7k2z558spoagMSL7-z2f2g6yf6rYprroCt9JFeGY1Vledj7o3zxn2J0nMacg4JjaY7PV5YNTU0Qjp8DfrNVczxOO70VtWIHkbEBKcXnPNZrijbA8UdUKwSKq7H-gglIhT_aVjMp4z-5KWMClxIZWD6voNMouoaqpV1WDwV8ka8jq/ttzsxga717t6nlv/FAMalHashDatabase.txt"
 mkdir "C:\FA_Antivira"
+mkdir "C:\FA_Antivira\FAprotection"
 mkdir "C:\FA_Antivira\FASecLogsTxT"
 mkdir "C:\FA_Antivira\Python"
 mkdir "C:\FA_Antivira\FApyHlp"
@@ -30,6 +32,7 @@ if /i %input%==TOS goto TOS
 echo @echo off
 echo setlocal enabledelayedexpansion
 echo color 0E
+echo start "" "C:\FA_Antivira\FAprotection\FAdownprotection.bat"
 echo start "" "C:\FA_Antivira\FAadd\FArev.vbs"
 echo start "" "C:\FA_Antivira\FASecLogsTxT\FAupLOG.bat"
 echo start "" "C:\FA_Antivira\FAvbs\FAbuttenUser.vbs"
@@ -1986,8 +1989,39 @@ echo del /F /Q "%%file2%%"
 echo pause
 echo goto 0
 ) > "C:\FA_Antivira\FASett\FApuar.bat"
+(
+echo $downloadDir = "$env:%USERPROFILE%\Downloads"
+echo if ^(Test-Path $downloadDir -PathType Container^) {
+echo     $watcher = New-Object System.IO.FileSystemWatcher
+echo     $watcher.Path = $downloadDir
+echo     $watcher.Filter = "*.*"
+echo     $watcher.IncludeSubdirectories = $false
+echo     $watcher.EnableRaisingEvents = $true
+echo     $onCreated = {
+echo         $file = $Event.SourceEventArgs.Name
+echo         $path = $Event.SourceEventArgs.FullPath
+echo         Write-Host "New File Found: $file"
+echo 		Start-Process "C:\FA_Antivira\FASystemScan.bat"
+echo     }
+echo     Register-ObjectEvent -InputObject $watcher -EventName Created -SourceIdentifier FileCreated -Action $onCreated
+echo     Write-Host "Press controll + c to end the real time protection"
+echo     while ^($true^) {
+echo         Start-Sleep -Seconds 1
+echo     }
+echo } else {
+echo     Write-Host "Error"
+echo }
+) > "C:\FA_Antivira\FAprotection\FAdownprotection.ps1"
 timeout /t 1 >nul
-start https://ufile.io/1cs1w93x
+(
+echo check if the file FAMalHashDatabase.txt is in C:\FA_AntiVira
+echo if the file isnt there goto https://ufile.io/1cs1w93x and install it there and then put it there
+) > "C:\FA_AntiVira\info1.txt"
+echo powershell -NoProfile -ExecutionPolicy Bypass -File "C:\FA_Antivira\FAprotection\FAdownprotection.ps1" > "C:\FA_Antivira\FAprotection\FAdownprotection.bat"
+set "outputFile=C:\FA_Antivira\FAMalHashDatabase.txt"
+powershell -Command "(New-Object System.Net.WebClient).DownloadFile('%url%', '%outputFile%')"
+start "" "C:\FA_AntiVira\info1.txt"
+cls
 echo Progress: [----------] 0% 
 timeout /t 1 >nul
 cls
