@@ -1,10 +1,34 @@
-FA Adv Security Tool.bat
-Is a Advanced securety tool that helps you to view and maintain your information. scan for damaged system files or low performance on your device and fix it for you
+FA AntiVira is a simple Anti Virus made by fabischau 
 
-FA Installer v.1.1 .bat
-is the installer for the main anti virus
-while the instalation it will also lead you to a ufile link. install the .txt file and put the file into the folder C:\FA_Antivira\
+the anti virus has no real time protection so you should use it WITH ANOTHER ANTI VIRUS
 
-FAprotection.exe
-the real time protection that notefies you when a file is added or deleted in C:\Windows\System32
-Just put it into auto start and then it will start every time you start your pc and can protect you at all times
+FA AntiVira is Available for windows 10 and 11 
+
+its features are:
+URL Scan
+Password Generator
+Super Password Generator
+Quick Scan
+Open your Anti Virus
+Helps you Repair Damaged System Files
+Start Menu
+URL Database with over 700 links
+File Killer
+Single File Scanner
+Database with over 771000 malware hashes
+Python user interface that requires python
+Vbs user interface. it uses that if you dont have python
+Programm Manager
+Firewall Manager
+Conection And Info Manager
+Scan for A Damaged System
+Check and Repair File System Errors
+Clean Temporary Files
+Defragment the Hard Drive
+Run Performance Monitoring and Diagnostics
+Scan Multible files
+Virus Total Scanns (requires Virus Total API)
+Simple Quarantene
+Batch Code Scanning
+Quarantine
+Signature Based Detection
