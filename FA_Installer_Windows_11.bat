@@ -2070,6 +2070,7 @@ echo This Programm will be allowed to create files and folders on your pc
 echo This programm will be allowed to store and collect information that will be just stored on your device
 echo The Programm may cause tiny damages on your device for example by using it wrong. but it will warn you.
 echo You will also have to accept the tos of Malware bazaar 
+start https://fabischau1.github.io/FAAntivira/TOS.html
 pause
 cls
 goto start
