@@ -87,14 +87,17 @@ echo     elif i == 2:
 echo         os.system^("start C:\\FA_Antivira\\FASuperPassword.bat"^)
 echo     elif i == 3:
 echo         os.system^("start C:\\FA_Antivira\\FApyHlp\\FAscanmenu.py"^)
+echo         exit^(^)
 echo     elif i == 4:
 echo         os.system^("start C:\\FA_Antivira\\FAantivirusopener.bat"^)
+echo         exit^(^)
 echo     elif i == 5:
 echo         os.system^("start C:\\FA_Antivira\\FASett\\FApuar.bat"^)
 echo     elif i == 6:
 echo         os.system^("start C:\\FA_Antivira\\FAadvtool.bat"^)
 echo     elif i == 7:
 echo         os.system^("start C:\\FA_Antivira\\StardMenu.bat"^)
+echo         exit^(^)
 echo     elif i == 8:
 echo         os.system^("start C:\\FA_Antivira\\FAmalfiledel.bat"^)
 echo WIDTH, HEIGHT = 800, 600
@@ -119,6 +122,7 @@ echo                        activeforeground="#ddd", activebackground="#444",
 echo                        relief="flat", padx=10, pady=5, borderwidth=0^)
 echo     button.place^(x=pos[0], y=pos[1], width=200, height=50^)
 echo root.mainloop^(^)
+echo os.system^('taskkill /f /im wscript.exe'^)
 ) > "C:\FA_Antivira\Python\FAMsh.py"
 (
 echo import tkinter as tk
