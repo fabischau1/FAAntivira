@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service</title>
+    <style>
+        /* Global Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f7f7f7;
+            transition: background-color 0.5s;
+        }
+        main {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        section {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            transition: background-color 0.5s;
+        }
+        h1, h2, h3 {
+            font-weight: bold;
+            color: #333;
+            margin-top: 0;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        h2 {
+            font-size: 18px;
+        }
+        h3 {
+            font-size: 16px;
+        }
+        p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        a {
+            text-decoration: none;
+            color: #337ab7;
+            transition: color 0.5s;
+        }
+        a:hover {
+            color: #23527c;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        address {
+            font-style: normal;
+            color: #666;
+        }
+
+        /* Dark Mode */
+        body.dark-mode {
+            background-color: #333;
+        }
+        body.dark-mode main {
+            background-color: #444;
+            border-color: #555;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        body.dark-mode section {
+            background-color: #444;
+            border-color: #555;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        body.dark-mode h1, body.dark-mode h2, body.dark-mode h3 {
+            color: #fff;
+        }
+        body.dark-mode p {
+            color: #ccc;
+        }
+        body.dark-mode a {
+            color: #66d9ef;
+        }
+        body.dark-mode a:hover {
+            color: #4bc7f4;
+        }
+        body.dark-mode address {
+            color: #999;
+        }
+
+        /* Animations */
+        section {
+            transform: translateY(20px);
+            opacity: 0;
+        }
+        section.animate {
+            transform: translateY(0);
+            opacity: 1;
+            transition: transform 0.5s, opacity 0.5s;
+        }
+
+        /* Toggle Button */
+        #dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #337ab7;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.5s;
+        }
+        #dark-mode-toggle:hover {
+            background-color: #23527c;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Terms of Service</h1>
+        <button id="dark-mode-toggle">Toggle Dark Mode</button>
+    </header>
+    <main>
+        <section id="intro" class="animate">
+            <h2>1. Introduction</h2>
+            <p>These Terms of Service (hereinafter "TOS") govern the use of our program and services. By accessing or using our program, you agree to these TOS.</p>
+        </section>
+        <section id="program-use" class="animate">
+            <h2>2. Use of the Program</h2>
+            <p>You agree to use our program only for lawful purposes and not to upload,post, or otherwise transmit any content that violates applicable law or infringes the rights of third parties.</p>
+        </section>
+        <section id="registration" class="animate">
+            <h2>3. Registration and Account Security</h2>
+            <p>To use certain features of our program, you must create an account. You are responsible for maintaining the confidentiality of your account information and agree to notify the account host promptly of any unauthorized use of your account.</p>
+        </section>
+        <section id="privacy" class="animate">
+            <h2>4. Privacy</h2>
+            <p>Your privacy is important to us. Our <a href="#">Privacy Policy</a> describes how we collect, use, and protect your personal data.</p>
+            <h3>4.1 Storage of Personal Data</h3>
+            <p>Our program stores certain personal data locally on your PC to provide an overview of the network and system configuration. This data includes:</p>
+            <ul>
+                <li>IP addresses (IPv4 and IPv6)</li>
+                <li>Subnet mask</li>
+                <li>Gateway</li>
+                <li>Network, system, and hardware information</li>
+            </ul>
+        </section>
+        <section id="liability" class="animate">
+            <h2>5. Limitation of Liability</h2>
+            <p>Our program may cause damage to your system. You use the program at your own risk. Neither the creator of the program nor the operator of the platform from which you obtained the program shall be liable for damages arising from the use of the program.</p>
+        </section>
+        <section id="third-party" class="animate">
+            <h2>6. Third-Party Services</h2>
+            <p>By using our program, you also agree to the terms of service of the following third-party services:</p>
+            <ul>
+                <li><a href="https://bazaar.abuse.ch/faq/#tos">Malware Bazaar (abuse.ch)</a></li>
+                <li><a href="https://urlhaus.abuse.ch/api/">URLhaus (abuse.ch)</a></li>
+                <li><a href="https://virustotal.readme.io/docs/terms-of-service">VirusTotal</a></li>
+            </ul>
+    </section>
+        <section id="legal-restrictions" class="animate">
+        <h2>7. Legal Restrictions and Disclaimer</h2>
+        <p>By using our program, you agree to use it solely for lawful, moral, and ethical purposes. You are prohibited from using the program for any illegal activities, including but not limited to, cybercrime, malware creation, hacking, or any actions that violate laws or regulations in your home country or any other jurisdictions involved. This includes compliance with laws in the European Union, Germany, France, the United Kingdom, the USA, Australia, Canada, China, Russia, and any other relevant countries.</p>
+          <p>The creator of this program and any associated parties shall not be held responsible for any damages or legal consequences resulting from your use of the program for unlawful, immoral, or unethical purposes. You are solely responsible for all activities conducted using the program. This includes, but is not limited to, any breaches of laws or regulations.</p>
+        <p>The creator reserves the right to amend these Terms of Service as necessary. Continued use of the program after any changes to these terms will constitute your acceptance of the modified terms.</p>
+    </section>
+        <section id="changes" class="animate">
+            <h2>8. Changes to the TOS</h2>
+            <p>We reserve the right to change these TOS at any time. All changes will be published on this page. Your continued use of the program after the publication of changes constitutes your agreement to these changes.</p>
+        </section>
+    </main>
+
+    <script>
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+        });
+
+        const sections = document.querySelectorAll('section');
+        let animationDelay = 0;
+
+        sections.forEach(section => {
+            section.style.animationDelay = `${animationDelay}s`;
+            animationDelay += 0.2;
+        });
+    </script>
+</body>
+</html>
